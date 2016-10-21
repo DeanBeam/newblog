@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Hello</title>
+</head>
+<body>
+{% if request.user.is_authenticated %}
+Hello, {{ request.user.username }}. It's nice to meet you again. Of course you could <a href="/logout/">logout.</a>
+{% else %}
+The first page of app. So you can <a href="register/">register to the site</a>
+or, if you already registred, just <a href="login/">enter.</a>
+<br><br>
+<a href="{% url 'social:begin' "facebook" %}" class="fb sn-logo">Login Facebook</a>
+
+{% endif %}
+    {% for post in posts %}
+        <a href="/{{post.slug}}/"><h2>{{ post.title }}<br></h2></a>
+        {{ post.text|safe }}<br>
+        {{ post.comment_set.count }}
+    {% endfor %}
+<br>
+<a href="/new_post/">add new post</a>
+</body>
+</html>

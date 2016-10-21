@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>{{ post.title }}</title>
+</head>
+<body>
+<a href="/">HOME</a>
+<h1>{{ post.title }}</h1>
+{{ post.text }}
+<br>
+{% block comments %}
+{% endblock %}
+<br>
+</body>
+</html>

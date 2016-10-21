@@ -1,0 +1,13 @@
+{% extends 'vlg/detail_post.html' %}
+{% block comments %}
+{% for comment in comments %}
+    <br>{{ comment.text}} {{ comment.date_creation }}{{ comment.user }}
+{% endfor %}
+<br>
+<br>
+<form method="post" action="/{{ post.slug }}/">
+    {% csrf_token %}
+    {{ comment_form }}
+    <input type="submit" title="Написать">
+</form>
+{% endblock %}
